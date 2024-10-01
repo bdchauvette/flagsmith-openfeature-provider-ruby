@@ -53,7 +53,7 @@ module OpenFeature
         def fetch_flag_collection(evaluation_context:)
           if evaluation_context
             identity = Identity.from_context(evaluation_context)
-            client.get_identity_flags(identity.identifier, identity.transient, **identity.traits)
+            client.get_identity_flags(identity.identifier, **identity.traits)
           else
             client.get_environment_flags
           end
