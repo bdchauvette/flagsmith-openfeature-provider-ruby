@@ -27,8 +27,8 @@ module OpenFeature
         def resolve(flag_key:, default_value:, evaluation_context:)
           flag_collection = fetch_flag_collection(evaluation_context:)
           flag = flag_collection.get_flag(flag_key)
-          value = process_value(flag.value)
-          FlagResolutionCreator.call(flag_key:, flag:, value:)
+          result = process(flag)
+          FlagResolutionCreator.call(flag_key:, flag:, value: result)
         rescue StandardError => e
           ErrorResolutionCreator.call(flag_key:, value: process_value(default_value), error_mapping:, error: e)
         end
@@ -39,6 +39,13 @@ module OpenFeature
         # specific type.
         def process_value(value)
           value
+        end
+
+        # Process the flag returned by the Flagsmith client.
+        #
+        # This may be overridden by subclasses to process the flag differently.
+        def process(flag)
+          process_value(flag.value)
         end
 
         private
