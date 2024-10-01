@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "open_feature/flagsmith/provider/live_flag_resolution_creator"
+require "open_feature/flagsmith/provider/base_flag_resolution_creator"
+
 module OpenFeature
   module Flagsmith
     class Provider
