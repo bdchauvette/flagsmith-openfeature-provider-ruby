@@ -24,7 +24,7 @@ module OpenFeature
             value:,
             reason:,
             variant: nil,
-            metadata: {
+            flag_metadata: {
               feature_name: flag_key,
               enabled: flag.enabled,
               default: flag.default
