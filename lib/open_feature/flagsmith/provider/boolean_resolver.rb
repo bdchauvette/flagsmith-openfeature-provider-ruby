@@ -16,6 +16,10 @@ module OpenFeature
           super
         end
 
+        def process(flag)
+          flag.enabled?
+        end
+
         def process_value(value)
           case value
           in true, false

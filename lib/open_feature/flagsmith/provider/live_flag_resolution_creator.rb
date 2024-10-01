@@ -21,7 +21,7 @@ module OpenFeature
             value:,
             reason: SDK::Provider::Reason::UNKNOWN,
             variant: nil,
-            metadata: flag.to_h
+            flag_metadata: flag.to_h
           )
         end
       end

@@ -7,8 +7,9 @@ require "open_feature/flagsmith/provider"
 
 OpenFeature::SDK.configure do |config|
   config.set_provider OpenFeature::Flagsmith::Provider.build(
-    api_key: ENV["FLAGSMITH_API_KEY"],
-    base_url: ENV["FLAGSMITH_BASE_URL"]
+    environment_key: ENV["FLAGSMITH_API_KEY"],
+    api_url: ENV.fetch("FLAGSMITH_URL") { Flagsmith::Config::DEFAULT_API_URL },
+    logger: Logger.new($stdout).tap { |l| l.level = Logger::Severity::WARN }
   )
 end
 
