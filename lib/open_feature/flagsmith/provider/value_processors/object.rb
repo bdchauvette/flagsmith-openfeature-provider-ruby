@@ -9,7 +9,7 @@ module OpenFeature
   module Flagsmith
     class Provider
       module ValueProcessors
-        Object = lambda do |value|
+        Object = lambda do |_flag, value|
           JSON.parse(value)
         rescue JSON::ParserError => e
           raise ParseError, "Flag value cannot be parsed as JSON: #{e.message}"

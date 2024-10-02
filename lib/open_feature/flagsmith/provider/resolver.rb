@@ -35,7 +35,8 @@ module OpenFeature
         # @param evaluation_context [SDK::Provider::EvaluationContext]
         #   An object that provides context for flag evaluation.
         #
-        # @yield [flag_value] Gives the flag value to the block, if the flag is found AND enabled.
+        # @yield [flag, flag_value] Gives the flag value to the block, if the flag is found AND enabled.
+        # @yieldparam flag [::Flagsmith::Flags::Flag] The flag itself
         # @yieldparam flag_value [Object] The value of the flag
         # @yieldreturn [Object] The processed value of the flag
         #
@@ -67,7 +68,7 @@ module OpenFeature
           # from the API or local evaluation. In this case, we want to process
           # the returned value using the given block, so that we can be sure
           # the found flag has the correct type.
-          live_value_resolution_details(flag:, processed_value: yield(flag.value))
+          live_value_resolution_details(flag:, processed_value: yield(flag, flag.value))
         rescue StandardError => e
           # Capute any errors that occur during either flag fetching or value
           # processing, so that this method is guaranteed to always return an

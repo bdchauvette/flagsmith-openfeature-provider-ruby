@@ -4,7 +4,7 @@ module OpenFeature
   module Flagsmith
     class Provider
       module ValueProcessors
-        Integer = lambda do |value|
+        Integer = lambda do |_flag, value|
           return value if value.is_a?(::Integer)
           return value.to_int if value.respond_to?(:to_int)
 
