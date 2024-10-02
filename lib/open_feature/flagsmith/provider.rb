@@ -40,6 +40,12 @@ module OpenFeature
       end
 
       # Implements the {SDK::Provider} duck.
+      def init; end
+
+      # Implements the {SDK::Provider} duck.
+      def shutdown; end
+
+      # Implements the {SDK::Provider} duck.
       #
       # @see https://github.com/open-feature/ruby-sdk/tree/main?tab=readme-ov-file#develop-a-provider
       #
