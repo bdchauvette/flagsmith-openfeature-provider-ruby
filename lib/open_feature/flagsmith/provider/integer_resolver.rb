@@ -12,14 +12,6 @@ module OpenFeature
       #
       # @api private
       class IntegerResolver < Resolver
-        def resolve(flag_key:, default_value:, evaluation_context:)
-          unless default_value.nil? || default_value.is_a?(Integer) || default_value.respond_to?(:to_i)
-            raise TypeError, "Default value must be an integer, convertible to an integer, or nil"
-          end
-
-          super
-        end
-
         def process_value(value)
           return value if value.is_a?(Integer)
           return value.to_i if value.respond_to?(:to_i)

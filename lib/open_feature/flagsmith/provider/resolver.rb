@@ -30,7 +30,7 @@ module OpenFeature
           result = process(flag)
           FlagResolutionCreator.call(flag_key:, flag:, value: result)
         rescue StandardError => e
-          ErrorResolutionCreator.call(flag_key:, value: process_value(default_value), error_mapping:, error: e)
+          ErrorResolutionCreator.call(flag_key:, value: default_value, error_mapping:, error: e)
         end
 
         # Process the value returned by the Flagsmith client.

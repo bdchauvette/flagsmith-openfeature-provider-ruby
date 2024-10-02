@@ -8,14 +8,6 @@ module OpenFeature
     class Provider
       # @api private
       class BooleanResolver < Resolver
-        def resolve(flag_key:, default_value:, evaluation_context:)
-          unless default_value.nil? || [true, false].include?(default_value)
-            raise TypeMismatchError, "Default value must be true, false, or nil"
-          end
-
-          super
-        end
-
         def process(flag)
           flag.enabled?
         end
