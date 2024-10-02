@@ -8,14 +8,6 @@ module OpenFeature
     class Provider
       # @api private
       class NumberResolver < Resolver
-        def resolve(flag_key:, default_value:, evaluation_context:)
-          unless default_value.nil? || default_value.is_a?(Numeric)
-            raise TypeMismatchError, "Default value must be a number or nil"
-          end
-
-          super
-        end
-
         def process_value(value)
           raise TypeMismatchError, "Flag value is not numeric" unless value.is_a?(Numeric)
 

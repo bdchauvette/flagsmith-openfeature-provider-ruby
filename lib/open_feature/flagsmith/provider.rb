@@ -102,7 +102,7 @@ module OpenFeature
       # @see https://github.com/open-feature/ruby-sdk/tree/main?tab=readme-ov-file#develop-a-provider
       #
       # @param flag_key [String, Symbol] The key of the flag to fetch.
-      # @param default_value [Integer, #to_i, #to_int, nil] The default value to return if the flag is not found.
+      # @param default_value [Integer, nil] The default value to return if the flag is not found.
       # @param evaluation_context [SDK::Provider::EvaluationContext] An object that provides context for flag evaluation.
       # @return [SDK::Provider::ResolutionDetails]
       def fetch_integer_value(flag_key:, default_value:, evaluation_context: nil)
@@ -114,7 +114,7 @@ module OpenFeature
       # @see https://github.com/open-feature/ruby-sdk/tree/main?tab=readme-ov-file#develop-a-provider
       #
       # @param flag_key [String, Symbol] The key of the flag to fetch.
-      # @param default_value [Float, #to_f, nil] The default value to return if the flag is not found.
+      # @param default_value [Float, nil] The default value to return if the flag is not found.
       # @param evaluation_context [SDK::Provider::EvaluationContext] An object that provides context for flag evaluation.
       # @return [SDK::Provider::ResolutionDetails]
       def fetch_float_value(flag_key:, default_value:, evaluation_context: nil)
@@ -133,7 +133,7 @@ module OpenFeature
       #   it with {#fetch_string_value}, and then parse it in your application.
       #
       # @param flag_key [String, Symbol] The key of the flag to fetch.
-      # @param default_value [Object] The default value to return if the flag is not found.
+      # @param default_value [Object, nil] The default value to return if the flag is not found.
       # @param evaluation_context [SDK::Provider::EvaluationContext] An object that provides context for flag evaluation.
       # @return [SDK::Provider::ResolutionDetails]
       def fetch_object_value(flag_key:, default_value:, evaluation_context: nil) # rubocop:disable Lint/UnusedMethodArgument
