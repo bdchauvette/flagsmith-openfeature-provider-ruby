@@ -1,17 +1,18 @@
 # frozen_string_literal: true
 
+require "json"
+
 require "open_feature/flagsmith/provider/error"
 require "open_feature/flagsmith/provider/resolver"
 
 module OpenFeature
   module Flagsmith
     class Provider
-      # @api private
-      class NumberResolver < Resolver
-        def process_value(value)
-          raise TypeMismatchError, "Flag value is not numeric" unless value.is_a?(Numeric)
-
-          value
+      module ValueProcessors
+        Object = lambda do |value|
+          JSON.parse(value)
+        rescue JSON::ParserError => e
+          raise ParseError, "Flag value cannot be parsed as JSON: #{e.message}"
         end
       end
     end
