@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
     end
   end
 
-  spec.add_dependency "flagsmith", "~> 4.1.1"
+  spec.add_dependency "flagsmith", "~> 4.3"
   spec.add_dependency "openfeature-sdk", "~> 0.4.0"
 
   spec.add_development_dependency "minitest", "~> 5.16"

@@ -62,7 +62,7 @@ module OpenFeature
         attr_reader :traits
 
         def initialize(identifier:, transient:, traits:)
-          @identifier = identifier
+          @identifier = identifier.to_s # Flagsmith expects a string
           @transient = transient
           @traits = traits
         end
